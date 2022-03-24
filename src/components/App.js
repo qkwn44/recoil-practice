@@ -7,14 +7,17 @@ import {
   useRecoilValue,
 } from "recoil";
 import { counterLabelSelector, countState } from "../state/counter";
+import Counter from "./counter";
+import ReadOnly from "./readOnly";
+import SelectorCount from "./selectorCount";
 import RecoilStarCount from "./recoilStarCount";
 function App() {
   const counter = useRecoilValue(countState);
   return (
     <>
-      <React.Suspense fallback={<div>로딩중입니다.</div>}>
+      <RecoilRoot>
         <RecoilStarCount />
-      </React.Suspense>
+      </RecoilRoot>
     </>
   );
 }

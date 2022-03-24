@@ -9,7 +9,10 @@ export const recoilStarCountState = selector({
     );
 
     console.log("response: ", response);
+
     const recoilProjectInfo = await response.json();
+
+    console.log("recoilProjectInfo: ", recoilProjectInfo);
     // stargazers_count 반환
     return recoilProjectInfo["stargazers_count"];
   },

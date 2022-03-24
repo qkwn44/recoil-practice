@@ -1,18 +1,19 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 import { recoilStarCountState } from "../state/recoilStar";
 
 function RecoilStarCount() {
-  const recoilStarCount = useRecoilValue(recoilStarCountState);
+  const recoilStarCount = useRecoilValueLoadable(recoilStarCountState);
 
-  /* 
- 비동기통신을 사용하기 위해선 
- 해당 컴포넌트를 Suspense로 비동기상태에 대한 처리 진행
- */
+  if (recoilStarCount.state === "loading") {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <p>recoil github star 갯수</p>
-      <p>{recoilStarCount}</p>
+      <div>
+        <p>recoil github star 갯수</p>
+        <p>{recoilStarCount.contents}</p>
+      </div>
     </>
   );
 }
